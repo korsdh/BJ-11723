@@ -16,29 +16,29 @@ int main() {
 		string order;
 		int n;
 		cin >> order;
-		if (order == "add") {
-			cin >> n;
-			S = S | (1 << n);
-			//cout << bitset<8>(S) << endl;
-		}
-		else if (order == "remove") {
-			cin >> n;
-			S = S & ~(1 << n);
-		}
-		else if (order == "check") {
-			cin >> n;
-			if ((S & (1 << n)) > 0) cout << "1" << endl;
-			else cout << "0" << endl;
-		}
-		else if (order == "toggle") {
-			cin >> n;
-			S = S ^ (1 << n);
-		}
-		else if (order == "all") {
+		if (order == "all") {
 			S = (1 << 21) - 1;
 		}
-		else if (order == "empty") {
-			S *= 0;
+		else if (order == "empty") S = 0;
+		else {
+			if (order == "add") {
+				cin >> n;
+				S = S | (1 << n);
+				//cout << bitset<8>(S) << endl;
+			}
+			else if (order == "remove") {
+				cin >> n;
+				S = S & ~(1 << n);
+			}
+			else if (order == "check") {
+				cin >> n;
+				if ((S & (1 << n)) > 0) cout << "1" << '\n';
+				else cout << "0" << '\n';
+			}
+			else if (order == "toggle") {
+				cin >> n;
+				S = S ^ (1 << n);
+			}
 		}
 	}
 	return 0;
